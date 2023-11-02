@@ -88,17 +88,17 @@ const createComment = () => {
   };
 };
 
-const createPhotoDescription = () => {
-
+const getPhotoDescription = function () {
   return {
-    id: generateIdNumber(),
-    url: 'photos/' + generateIdPhoto(),
-    description: descriptionExamples[getRandomNumber(0, descriptionExamples.length - 1)],
-    likes: getRandomNumber(MIN_LIKES_ON_PHOTO, MAX_LIKES_ON_PHOTO),
-    comments: Array.from({length: getRandomNumber(1, MAX_COMMENTARIES_ON_PHOTO)}, createComment),
+  id: idGenerator(),
+  url: `photos/${urlGenerator()}.jpg`,
+  description: 'Очень классная фотография',
+  likes: getRandomNumber(15, 200),
+  comments: Array.from({length: getRandomNumber(0, 30)}, commentGenerator),
   }
 }
 
+export {getPhotoDescription};
 
 
 // // const numbers = [];
