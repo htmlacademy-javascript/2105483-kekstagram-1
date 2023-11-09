@@ -31,50 +31,13 @@ const MIN_LIKES_ON_PHOTO = 15;
 const MAX_LIKES_ON_PHOTO = 200;
 
 
-
-const getRandomNumber = (min, max) => {
-  const result = Math.random() * (max - min + 1) + min;
-
-  return Math.floor(result);
-};
-
-
-function generateRandomObjects() {
-  const array = [];
-
-  for (let i = 0; i < 25; i++) {
-    const randomObject = {
-      id: i + 1,
-      name: Object ${i + 1},
-      value: Math.random() * 100, // генерация случайного значения
-
-    };
-    array.push(randomObject);
+const messageGenerator = function () {
+  let message = getData.MESSAGES[getRandomNumber(0, getData.MESSAGES.length - 1)];
+  if (getRandomNumber(1, 2) === 2) {
+    message += ' ' + getData.MESSAGES[getRandomNumber(0, getData.MESSAGES.length - 1)];
   }
-
-  return array;
+  return message;
 }
-
-
-console.log(arrayOfObjects);
-
-
-
-function generateObjectsArray() {
-  const objectsArray = [];
-
-  for (let i = 1; i <= 25; i++) {
-    const objectId = i; // Уникальный идентификатор объекта
-    const otherProperty = "Другое свойство " + i; // Другое свойство объекта
-
-    const newObj = new MyObject(objectId, otherProperty);
-    objectsArray.push(newObj);
-  }
-
-  return objectsArray;
-}
-
-console.log(myArray);
 
 
 
@@ -88,13 +51,15 @@ const createComment = () => {
   };
 };
 
-const getPhotoDescription = function () {
+let photoId = 0;
+const getPhotoDescription = () => {
+  photoId = photoId + 1;
   return {
-  id: idGenerator(),
-  url: `photos/${urlGenerator()}.jpg`,
-  description: 'Очень классная фотография',
-  likes: getRandomNumber(15, 200),
-  comments: Array.from({length: getRandomNumber(0, 30)}, commentGenerator),
+    id: photoId,
+    url: `photos/${photoId}.jpg`,
+    description: 'Очень классная фотография',
+    likes: getRandomNumber(15, 200),
+    comments: Array.from({length: getRandomNumber(0, 30)}, createComment),
   }
 }
 
@@ -149,22 +114,3 @@ export {getPhotoDescription};
 //   avatar: 'img/avatar-2.svg'
 // }
 
-
-
-
-  // function generateObjectsArray() {
-  //   const objectsArray = [];
-
-  //   for (let i = 1; i <= 25; i++) {
-  //     const objectId = i; // Уникальный идентификатор объекта
-  //     const otherProperty = "Другое свойство " + i; // Другое свойство объекта
-
-  //     const newObj = new MyObject(objectId, otherProperty);
-  //     objectsArray.push(newObj);
-  //   }
-
-  //   return objectsArray;
-  // }
-
-  // const myArray = generateObjectsArray();
-  // console.log(myArray);
