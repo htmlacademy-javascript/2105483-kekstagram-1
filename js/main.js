@@ -41,17 +41,16 @@ const messageGenerator = function () {
 
 
 
-const createComment = () => {
-  commentId = commentId + 1;
+const commentGenerator = function () {
   return {
-    id: commentId,
+    id: idCommentGenerator(),
     avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
-    name: NAMES[getRandomNumber(0, NAMES.length - 1)],
-    message: MESSAGES[getRandomNumber(0, MESSAGES.length - 1)]
-  };
-};
+    message: messageGenerator(),
+    name: getData.NAMES[getRandomNumber(0, getData.NAMES.length - 1)]
+  }
+}
 
-let photoId = 0;
+
 const getPhotoDescription = () => {
   photoId = photoId + 1;
   return {
