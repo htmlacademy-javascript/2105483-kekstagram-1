@@ -29,6 +29,7 @@ const SIMILAR_COMMENTARIES_ID = 1000;
 const MAX_COMMENTARIES_ON_PHOTO = 6;
 const MIN_LIKES_ON_PHOTO = 15;
 const MAX_LIKES_ON_PHOTO = 200;
+const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1));
 
 
 const messageGenerator = function () {
@@ -41,16 +42,18 @@ const messageGenerator = function () {
 
 
 
-const commentGenerator = function () {
+let commentId = 0
+const createComment = function () {
+  commentId = commentId + 1;
   return {
-    id: idCommentGenerator(),
+    id: commentId,
     avatar: `img/avatar-${getRandomNumber(1, 6)}.svg`,
     message: messageGenerator(),
-    name: getData.NAMES[getRandomNumber(0, getData.NAMES.length - 1)]
+    name: NAMES[getRandomNumber(0, NAMES.length - 1)]
   }
 }
 
-
+let photoId = 0;
 const getPhotoDescription = () => {
   photoId = photoId + 1;
   return {
@@ -64,6 +67,10 @@ const getPhotoDescription = () => {
 
 export {getPhotoDescription};
 
+
+const createPhotos = () => {
+  return Array.from({ length:25  }, getPhotoDescription);
+}
 
 // // const numbers = [];
 // // // [1,2,3,4,5]
