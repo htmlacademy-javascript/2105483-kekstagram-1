@@ -33,9 +33,9 @@ const getRandomNumber = (min, max) => Math.floor(Math.random() * (max - min + 1)
 
 
 const messageGenerator = function () {
-  let message = getData.MESSAGES[getRandomNumber(0, getData.MESSAGES.length - 1)];
+  let message = MESSAGES[getRandomNumber(0, MESSAGES.length - 1)];
   if (getRandomNumber(1, 2) === 2) {
-    message += ' ' + getData.MESSAGES[getRandomNumber(0, getData.MESSAGES.length - 1)];
+    message += ' ' + MESSAGES[getRandomNumber(0, MESSAGES.length - 1)];
   }
   return message;
 }
